@@ -103,7 +103,7 @@ def _average_gradient_norm(model, X_train, y_train, batch_size):
 
 
 def train_model(model:Model, dataset_id, dataset_prefix, dataset_fold_id=None, epochs=50, batch_size=128, val_subset=None,
-                cutoff=None, normalize_timeseries=False, learning_rate=1e-3, monitor='loss', optimization_mode='auto', compile_model=True):
+                cutoff=None, normalize_timeseries=True, learning_rate=1e-3, monitor='loss', optimization_mode='auto', compile_model=True):
     X_train, y_train, X_test, y_test, is_timeseries = load_dataset_at(dataset_id,
                                                                       fold_index=dataset_fold_id,
                                                                       normalize_timeseries=normalize_timeseries)
@@ -163,7 +163,7 @@ def train_model(model:Model, dataset_id, dataset_prefix, dataset_fold_id=None, e
 
 
 def evaluate_model(model:Model, dataset_id, dataset_prefix, dataset_fold_id=None, batch_size=128, test_data_subset=None,
-                   cutoff=None, normalize_timeseries=False):
+                   cutoff=None, normalize_timeseries=True):
     _, _, X_test, y_test, is_timeseries = load_dataset_at(dataset_id,
                                                           fold_index=dataset_fold_id,
                                                           normalize_timeseries=normalize_timeseries)
